@@ -84,9 +84,10 @@ More details are in [Slides](https://docs.google.com/presentation/d/1JRhB1d7csof
 To use OpenRLHF, first launch the docker container (**Recommended**) and `pip install` openrlhf inside the docker container:
 
 ```bash
+# test on wsl2-ubuntu22.04LTS docker>19
 # Launch the docker container
-docker run --runtime=nvidia -it --rm --shm-size="10g" --cap-add=SYS_ADMIN -v $PWD:/openrlhf nvcr.io/nvidia/pytorch:24.02-py3 bash
-sudo pip uninstall xgboost transformer_engine flash_attn -y
+sudo docker run --network host --name openrlhf --runtime=nvidia -it --shm-size="10g" --cap-add=SYS_ADMIN -v $PWD:/openrlhf nvcr.io/nvidia/pytorch:24.02-py3 bash
+pip uninstall xgboost transformer_engine flash_attn -y
 
 # pip install
 pip install openrlhf
